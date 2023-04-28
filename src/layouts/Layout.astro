@@ -16,13 +16,34 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<header>
+			<h1>{title}</h1>
+			<nav>
+				<a href="">Home</a>
+				<a href="">About</a>
+				<a href="">Contact</a>
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<a href="">Home</a>
+			<a href="">About</a>
+			<a href="">Contact</a>
+	</footer>
 	</body>
 </html>
 <style is:global>
 	:root {
 		--accent: 124, 58, 237;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
 	}
 	html {
 		font-family: system-ui, sans-serif;
@@ -32,4 +53,32 @@ const { title } = Astro.props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 60ch;
+	}
+	header, footer{
+		width:100%;
+		background: var(--accent-gradient);
+		color: white;
+		padding: 1rem;
+		margin:0;
+		height:15vh;
+		display:flex;
+		align-items:center;
+		justify-content:space-between;
+	}
+	footer{
+		justify-content:space-around;
+		height:10vh;
+	}
+	a{
+		color:#111;
+		text-decoration:none;
+	}
+	a:hover{
+		text-decoration:underline;
+	}
 </style>
+
